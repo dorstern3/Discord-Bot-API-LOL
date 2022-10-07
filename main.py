@@ -36,19 +36,24 @@ bot = commands.Bot(command_prefix="!", intents=intents,help_command=None)
 # on_ready command 
 @bot.event
 async def on_ready():
- channel = bot.get_channel(1014874558366502925) # channel ID
- await channel.send(' {0.user} connect to your channel!'.format(bot))
- await channel.send('Key !help to Command Manual')
+ print('{0.user} connect to your channel!'.format(bot))
+#  channel = bot.get_channel(1014874558366502925) # channel ID
+#  await channel.send(' {0.user} connect to your channel!'.format(bot))
+#  await channel.send('Key !help to Command Manual')
 
-
+# Stop 
+@bot.command()
+async def stop(ctx):
+ data.stop()
 
 
 
 
 # Play
-# @bot.command()
-# async def play(ctx):
-  # data.start()
+@bot.command()
+async def play(ctx):
+ data.start()
+ 
   
   
 #  embed=discord.Embed(title = 'Data API',color = discord.Color.blue())
@@ -67,12 +72,19 @@ async def on_ready():
 #  await ctx.send(embed=embed)
 #  await asyncio.sleep(3)
 
-# @tasks.loop(seconds=5)
-# async def data():
+@tasks.loop(seconds=5)
+async def data():
+ data = resp.json()
+ guild = bot.get_guild(1014874558366502922)
+ channel = bot.get_channel(1014874558366502925) # channel ID
+ await channel.send('id: ' + str(data[0]['id']))
+ await channel.send('name: ' + str(data[0]['localizedNames']['en_US']['name']))
+#  embed=discord.Embed(title = 'Data API',color = discord.Color.blue())
+#  embed.add_field(name='id', value = data[x]['id'], inline=False) # id
+#  embed.add_field(name='name', value = data[x]['localizedNames']['en_US']['name'], inline=False) # localizedNames -> name
+#  await ctx.send(embed=embed)
+
  
-  # embed=discord.Embed(title = 'Data API',color = discord.Color.blue())
-  # embed.add_field(name='id', value = data[0]['id'], inline=False) # id
-  # await ctx.send(embed=embed)
   
 
 # Help -> Command Manual
