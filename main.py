@@ -45,14 +45,15 @@ async def on_ready():
 @bot.command()
 async def stop(ctx):
  data.stop()
-
+ await ctx.send("**stop data**")
 
 
 
 # Play
 @bot.command()
 async def play(ctx):
- data.start()
+  await ctx.send("**play data**")
+  data.start()
  
   
   
