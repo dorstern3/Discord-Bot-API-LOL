@@ -57,7 +57,6 @@ async def play(ctx):
   
   
 #  embed=discord.Embed(title = 'Data API',color = discord.Color.blue())
- 
 #  embed.add_field(name='id', value = data[0]['id'], inline=False) # id
 #    # embed.add_field(name='name', value = data[x]['localizedNames']['en_US']['name'], inline=False) # localizedNames -> name
 #    # embed.add_field(name='description', value = data[x]['localizedNames']['en_US']['shortDescription'], inline=False) # localizedNames -> description
@@ -74,22 +73,23 @@ async def play(ctx):
 
 @tasks.loop()
 async def data(ctx):
-
  data = resp.json()
-
  for x in range(325):
-  embed=discord.Embed(title = 'Data API for Player ' + str(x) ,color = discord.Color.red())
-  embed.add_field(name='id', value = data[x]['id'], inline=False) # id
-  embed.add_field(name='name', value = data[x]['localizedNames']['en_US']['name'], inline=False) # localizedNames -> name
-  embed.add_field(name='description', value = data[x]['localizedNames']['en_US']['shortDescription'], inline=False) # localizedNames -> description
-  embed.add_field(name='IRON', value = data[x]['thresholds']['IRON'], inline=False) # thresholds -> IRON
-  embed.add_field(name='GOLD', value = data[x]['thresholds']['GOLD'], inline=False) # thresholds -> GOLD
-  embed.add_field(name='SILVER', value = data[x]['thresholds']['SILVER'], inline=False) # thresholds -> SILVER
-  embed.add_field(name='DIAMOND', value = data[x]['thresholds']['DIAMOND'], inline=False) # thresholds -> DIAMOND
-  embed.add_field(name='BRONZE', value = data[x]['thresholds']['BRONZE'], inline=False) # thresholds -> BRONZE
-  embed.add_field(name='PLATINUM', value = data[x]['thresholds']['PLATINUM'], inline=False) # thresholds -> PLATINUM
-  embed.add_field(name='MASTER', value = data[x]['thresholds']['MASTER'], inline=False) # thresholds -> MASTER
-  await ctx.send(embed=embed)
+  try:
+   embed=discord.Embed(title = 'Data API for Player ' + str(x) ,color = discord.Color.red())
+   embed.add_field(name='id', value = data[x]['id'], inline=False) # id
+   embed.add_field(name='name', value = data[x]['localizedNames']['en_US']['name'], inline=False) # localizedNames -> name
+   embed.add_field(name='description', value = data[x]['localizedNames']['en_US']['shortDescription'], inline=False) # localizedNames -> description 
+   embed.add_field(name='IRON', value = data[x]['thresholds']['IRON'], inline=False) # thresholds -> IRON
+   embed.add_field(name='GOLD', value = data[x]['thresholds']['GOLD'], inline=False) # thresholds -> GOLD
+   embed.add_field(name='SILVER', value = data[x]['thresholds']['SILVER'], inline=False) # thresholds -> SILVER
+   embed.add_field(name='DIAMOND', value = data[x]['thresholds']['DIAMOND'], inline=False) # thresholds -> DIAMOND
+   embed.add_field(name='BRONZE', value = data[x]['thresholds']['BRONZE'], inline=False) # thresholds -> BRONZE
+   embed.add_field(name='PLATINUM', value = data[x]['thresholds']['PLATINUM'], inline=False) # thresholds -> PLATINUM
+   embed.add_field(name='MASTER', value = data[x]['thresholds']['MASTER'], inline=False) # thresholds -> MASTER
+   await ctx.send(embed=embed)
+  except KeyError:
+    await ctx.send(embed=embed)
   await asyncio.sleep(3)
 
  
