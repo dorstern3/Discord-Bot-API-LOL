@@ -42,7 +42,7 @@ async def on_ready():
 @bot.command()
 async def stop(ctx):
  await ctx.send("**stop data**")
- data.stop(ctx)
+ data.cancel()
  
 # Play
 @bot.command()
@@ -70,7 +70,7 @@ async def data(ctx):
    embed.add_field(name='GRANDMASTER', value = data[x].get('thresholds', {}).get('GRANDMASTER'), inline=False) # thresholds -> GRANDMASTER
    embed.add_field(name='CHALLENGER', value = data[x].get('thresholds', {}).get('CHALLENGER'), inline=False) # thresholds -> CHALLENGER
    await ctx.send(embed=embed)
-   await asyncio.sleep(3) # Delay
+   await asyncio.sleep(5) # Delay
  
 # Help -> Command Manual
 @bot.command(name='help')
