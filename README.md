@@ -2,7 +2,8 @@
 
 ## Add Enviroment Variable (.env file):
 - add the file **.env** and **edit** according to your **TOKEN** and **API_KEY** variables.
-- change number of **channel ID** in main.py file.
+- change the **API_KEY** according to your **API_KEY** on the website **Riot Developer Portal** (**API_KEY** changes every 24 hours).
+- change the number of **channel ID** in main.py file.
 
 ## Install:
 - python -m pip install dotenv
