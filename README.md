@@ -2,7 +2,7 @@
 
 ## Add Enviroment Variable (.env file):
 - add the file **.env** and **edit** according to your **TOKEN** and **API_KEY** variables.
-- change number of **channel ID**.
+- change number of **channel ID** in main.py file.
 
 ## Install:
 - python -m pip install dotenv
