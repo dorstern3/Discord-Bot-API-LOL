@@ -1,7 +1,7 @@
 # Lol-Api-Bot
 
 ## View:
-
+https://user-images.githubusercontent.com/96941609/212476740-c6266692-6b9a-460e-a415-b8dbd759d58f.mp4
 
 ## Add Enviroment Variable (.env file):
 - add the file **.env** and **edit** according to your **TOKEN** and **API_KEY** variables.
